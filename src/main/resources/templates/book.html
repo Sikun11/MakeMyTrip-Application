@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+   <style>
+      body{
+         
+         overflow: hidden;
+         background-size: cover;
+         background-position: center;
+         font-family: "Open Sans", sans-serif;
+      }
+      .container-form {
+    margin-left: 5rem;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 350px;
+}
+
+h2 {
+    margin-bottom: 1.5rem;
+    color: #333;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: .5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.2rem;
+    color: #555;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 0.4rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: .8rem;
+}
+
+.form-group textarea {
+    resize: vertical;
+    height: 50px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.form-actions .button {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #fff;
+}
+
+.form-actions #submit {
+    background-color: #4caf50;
+}
+
+.form-actions #reset {
+    background-color: #f44336;
+}
+
+   </style>
+
+</head>
+<body th:style="|background-image: url('@{/img/hero.jpg}')|">
+<div class="header">
+   <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+      <div class="container-fluid pt-3 pb-3" >
+        <div style="padding-left: 7rem;">
+         <a class="navbar-brand" style="font-size: 2rem;" href="#">Make<span style="color: yellow;">My</span>Trip</a>
+        </div>
+
+        
+        <div class="d-flex" style="padding-right: 6rem;">
+         <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav me-auto" style="font-size: 1rem;">
+              
+              <li class="nav-item"style="padding-left: 1rem;">
+                <a class="nav-link" th:href="@{/}">HOME</a>
+              </li>
+              <li class="nav-item"style="padding-left: 1rem;">
+                <a class="nav-link" th:href="@{/book}">BOOK TICKET</a>
+              </li>
+              <li class="nav-item"style="padding-left: 1rem;">
+                <a class="nav-link" th:href="@{/history}">BOOKING HISTORY</a>
+              </li>
+              <li class="nav-item" style="padding-left: 1rem;" >
+                <a class="nav-link" th:href="@{/check}">CHECK TICKET STATUS</a>
+              </li>
+            </ul>
+            
+          </div>
+        </div>
+      </div>
+    </nav>
+</div>
+
+<section id="hero">
+
+    <div class="container-fluid pt-5">
+        <div class="row">
+            
+            <div class="col-4">
+                <div class="container-form">
+                    <font color='green'>
+                        <p th:text="${msg}"></p>
+                    </font>
+                    <form th:object="${req}" th:action="@{/booking}" th:method="post">
+                        <div class="form-group">
+                            <label for="fName">Name</label>
+                            <input type="text" id="name" th:field="*{name}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lName">Dob</label>
+                            <input type="date" id="gender" th:field="*{dob}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="fName">Gender</label>
+                            <input type="text" id="name" th:field="*{gender}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="doj">Date Of Journey</label>
+                            <input type="date" id="gender" th:field="*{doj}" required>
+                        </div>
+                        <div>
+                        <div class="row">
+                             <div class="form-group col-6">
+                                <label for="form">Form</label>
+                                <input type="text" id="form" th:field="*{source}" required>
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="to">To</label>
+                                <input type="text" id="to" th:field="*{destination}" required>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="trainNum">Train Number</label>
+                            <input type="text" id="trainNum" th:field="*{trainNum}" required>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <input id="submit" class="btn btn-success" type="submit" value="BookTicket" />
+                            <a href="/view" class="btn btn-danger">View Tickets</a>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-8" style="color: white;padding-left: 8rem;padding-right: 6rem;">
+                <div class="container-data" style="margin-top: 10rem; padding-left: 5rem;">
+                    <h2 style="color: white;font-size: 2.5rem;" >Ticket Book Here....</h2>
+                    <p style="font-weight: 300;padding-top: 1.5rem;">Traveling by train is a popular choice for both short commutes and longer journeys, and for a good reason. With over a thousand routes connecting cities in India, traveling by train is the most convenient mode of travel. The combination of price, convenience, and speed makes train travel a sweet spot for discerning travelers. </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
+

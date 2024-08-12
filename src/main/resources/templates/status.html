@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+   <style>
+      body{
+      
+         overflow: hidden;
+         background-size: cover;
+         background-position: center;
+         font-family: "Open Sans", sans-serif;
+      }
+      .container-form {
+    margin-left: 15rem;
+    background-color: #ffffff76;
+    padding: 3rem;
+    border: 5px solid rgb(255, 153, 0);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 350px;
+    width: 100%;
+}
+
+   </style>
+</head>
+<body th:style="|background-image: url('@{/img/hero.jpg}')|">
+<div class="header">
+   <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+      <div class="container-fluid pt-3 pb-3" >
+        <div style="padding-left: 7rem;">
+         <a class="navbar-brand" style="font-size: 2rem;" href="">Make<span style="color: yellow;">My</span>Trip</a>
+        </div>
+
+        
+        <div class="d-flex" style="padding-right: 6rem;">
+         <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav me-auto" style="font-size: 1rem;">
+              
+              <li class="nav-item"style="padding-left: 1rem;">
+                <a class="nav-link" th:href="@{/}">HOME</a>
+              </li>
+              <li class="nav-item"style="padding-left: 1rem;">
+                <a class="nav-link" th:href="@{/book}">BOOK TICKET</a>
+              </li>
+              <li class="nav-item"style="padding-left: 1rem;">
+                <a class="nav-link" th:href="@{/history}">BOOKING HISTORY</a>
+              </li>
+              <li class="nav-item" style="padding-left: 1rem;" >
+                <a class="nav-link" th:href="@{/check}">CHECK TICKET STATUS</a>
+              </li>
+            </ul>
+            
+          </div>
+        </div>
+      </div>
+    </nav>
+</div>
+
+<div class="container-fluid " id="hero">
+    <div class="container mt-5" style="color: rgb(0, 0, 0);padding-top: 7rem;padding-left: 14rem;">
+        <div class="container-form " >
+            <div class="msg pb-1 text-center" style="color: rgb(0, 255, 60);">
+                <p th:text="${msg}"></p>
+            </div>
+            <table th:each="t : ${tkt}">
+                        
+                
+                            <tr>
+                                <td>Ticket ID :</td>
+                                <td th:text="${t.tktId}"style="color: rgb(242, 255, 0)"></td>
+                            </tr>
+                            <tr>
+                                <td>Ticket Status :</td>
+                                <td th:text="${t.tktStatus}"style="color: rgb(242, 255, 0)"></td>
+                            </tr>
+                            <tr>
+                                <td>Train Number :</td>
+                                <td th:text="${t.trainNum}"style="color: rgb(242, 255, 0)"></td>
+                            </tr>
+                            <tr>
+                                <td>Date Of Journey :</td>
+                                <td th:text="${t.doj}"style="color: rgb(242, 255, 0)"></td>
+                            </tr>
+                            <tr>
+                                <td>To :</td>
+                                <td th:text="${t.source}"style="color: rgb(242, 255, 0)"></td>
+                            </tr>
+                            <tr>
+                                <td>From :</td>
+                                <td th:text="${t.destination}"style="color: rgb(242, 255, 0)"></td>
+                            </tr>
+                            <tr>
+                                <td>Passenger Name :</td>
+                                <td th:text="${t.name}" style="color: rgb(242, 255, 0)"></td>
+                            </tr>
+                            <tr>
+                                <td>Date Of Birth :</td>
+                                <td th:text="${t.dob}"style="color: rgb(242, 255, 0)"></td>
+                            </tr>
+                            <tr  >
+                                <td >Gender :</td>
+                                <td th:text="${t.gender}" style="color: rgb(242, 255, 0)"></td>
+                            </tr>
+                            
+                        
+                    </table>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

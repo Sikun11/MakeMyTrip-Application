@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Page</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content:left;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+.container {
+    margin-left: 15rem;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+}
+
+h2 {
+    margin-bottom: 1.5rem;
+    color: #333;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.form-group textarea {
+    resize: vertical;
+    height: 100px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.form-actions .button {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #fff;
+}
+
+.form-actions #submit {
+    background-color: #4caf50;
+}
+
+.form-actions #reset {
+    background-color: #f44336;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Ticket Book Here....</h2>
+        <font color='green'>
+			<p th:text="${msg}"></p>
+		</font>
+        <form th:object="${req}" th:action="@{/booking}" th:method="post">
+            <div class="form-group">
+                <label for="fName">Name</label>
+                <input type="text" id="name" th:field="*{name}" required>
+            </div>
+            <div class="form-group">
+                <label for="lName">Dob</label>
+                <input type="date" id="gender" th:field="*{dob}" required>
+            </div>
+            <div class="form-group">
+                <label for="fName">Gender</label>
+                <input type="text" id="name" th:field="*{gender}" required>
+            </div>
+            <div class="form-group">
+                <label for="doj">Date Of Journey</label>
+                <input type="date" id="gender" th:field="*{doj}" required>
+            </div>
+            <div>
+            <div class="row">
+	             <div class="form-group col-5">
+	                <label for="form">Form</label>
+	                <input type="text" id="form" th:field="*{source}" required>
+	            </div>
+	            <div class="form-group col-5">
+	                <label for="to">To</label>
+	                <input type="text" id="to" th:field="*{destination}" required>
+	            </div>
+            </div>
+            </div>
+            <div class="form-group">
+                <label for="trainNum">Train Number</label>
+                <input type="text" id="trainNum" th:field="*{trainNum}" required>
+            </div>
+            
+            <div class="form-actions">
+                <input id="submit" class="btn btn-success" type="submit" value="BookTicket" />
+                <a href="/view" class="btn btn-danger">View Tickets</a>
+            </div>
+            
+        </form>
+    </div>
+    
+    
+    
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+		crossorigin="anonymous"></script>
+</body>
+</html>
